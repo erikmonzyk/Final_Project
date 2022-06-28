@@ -128,4 +128,4 @@ if __name__ == "__main__":
     # TODO: Use the statement below when running locally
     # app.run() 
     # TODO: Use the statement below before deployment to VMSS
-    git remote add origin https://github.com/erikmonzyk/Final-Project.gitapp.run(host='0.0.0.0', threaded=True, debug=True) # remote
+    (host='0.0.0.0', threaded=True, debug=True) # remote
