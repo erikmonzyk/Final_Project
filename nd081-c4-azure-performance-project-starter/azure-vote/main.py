@@ -8,6 +8,7 @@ import logging
 from datetime import datetime
 
 # App Insights
+
 from opencensus.ext.azure.log_exporter import AzureLogHandler
 from opencensus.ext.azure.log_exporter import AzureEventHandler
 from opencensus.ext.azure import metrics_exporter
