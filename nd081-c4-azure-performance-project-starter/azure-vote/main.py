@@ -26,11 +26,11 @@ from applicationinsights import TelemetryClient
 
 # Logging
 logger = logging.getLogger(__name__)
-handler = AzureLogHandler(connection_string='InstrumentationKey=7db6813c-4105-4383-859d-6335b52dcfa9')
-handler.setFormatter(logging.Formatter('%(traceId)s %(spanId)s %(message)s'))
-logger.addHandler(handler)
-logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=7db6813c-4105-4383-859d-6335b52dcfa9'))
-logger.setLevel(logging.INFO)
+logger.addHandler(AzureLogHandler(connection_string='InstrumentationKey=7db6813c-4105-4383-859d-6335b52dcfa9'))
+# handler.setFormatter(logging.Formatter('%(traceId)s %(spanId)s %(message)s'))
+# logger.addHandler(handler)
+# logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=7db6813c-4105-4383-859d-6335b52dcfa9'))
+# logger.setLevel(logging.INFO)
 
 # Metrics
 exporter = metrics_exporter.new_metrics_exporter(
@@ -43,7 +43,6 @@ tracer = Tracer(
         connection_string='InstrumentationKey=7db6813c-4105-4383-859d-6335b52dcfa9'),
     sampler=ProbabilitySampler(1.0),
     )
-tc = TelemetryClient('7db6813c-4105-4383-859d-6335b52dcfa9')
 
 app = Flask(__name__)
 
@@ -90,10 +89,10 @@ def index():
 
         # Get current values
         vote1 = r.get(button1).decode('utf-8')
-        tracer.span(name="Cats Vote")
-        
+        tracer.span(name="Cats")
+        .
         vote2 = r.get(button2).decode('utf-8')
-        tracer.span(name="Dogs Vote")
+        tracer.span(name="Dogs")
         
         # Return index with values
         return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title)
@@ -108,12 +107,12 @@ def index():
             vote1 = r.get(button1).decode('utf-8')
             properties = {'custom_dimensions': {'Cats Vote': vote1}}
             # TODO: use logger object to log cat vote
-            logger.info('Cats Vote', extra=properties)
+            logger.info('Cats', extra=properties)
 
             vote2 = r.get(button2).decode('utf-8')
             properties = {'custom_dimensions': {'Dogs Vote': vote2}}
             # TODO: use logger object to log dog vote
-            logger.info('Dogs Vote', extra=properties)
+            logger.info('Dogs', extra=properties)
 
             return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title)
 
