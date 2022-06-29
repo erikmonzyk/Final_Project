@@ -27,7 +27,9 @@ from applicationinsights import TelemetryClient
 # Logging
 logger = logging.getLogger(__name__)
 handler = AzureLogHandler(connection_string='InstrumentationKey=7db6813c-4105-4383-859d-6335b52dcfa9')
+handler.setFormatter(logging.Formatter('%(traceId)s %(spanId)s %(message)s'))
 logger.addHandler(handler)
+logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=7db6813c-4105-4383-859d-6335b52dcfa9'))
 logger.setLevel(logging.INFO)
 
 # Metrics
@@ -89,13 +91,13 @@ def index():
         # Get current values
         vote1 = r.get(button1).decode('utf-8')
         # TODO: use tracer object to trace cat vote
-        tracer.span(name="Cats Vote")
-        tc.track_event(name="Cats Vote")
+        with tracer.span(name="Cats Vote") as span:
+            tc.track_event(name="Cats Vote")
         tc.flush()
         
         vote2 = r.get(button2).decode('utf-8')
-        tracer.span(name="Dogs Vote")
-        tc.track_event("Dogs Vote")
+        with tracer.span(name="Dogs Vote") as span:
+            tc.track_event("Dogs Vote")
         tc.flush()
 
         # Return index with values
