@@ -33,7 +33,6 @@ exporter = metrics_exporter.new_metrics_exporter(
   enable_standard_metrics=True,
   connection_string='InstrumentationKey=7db6813c-4105-4383-859d-6335b52dcfa9')
 
-
 # Tracing
 tracer = Tracer(
     exporter=AzureExporter(
@@ -67,7 +66,7 @@ if ("TITLE" in os.environ and os.environ['TITLE']):
 else:
     title = app.config['TITLE']
 
-# Redis Connection set for local or single host deployment
+# Redis Connection set for local or single host
 r = redis.Redis()
 
 # Change title to host name to demo NLB
