@@ -32,7 +32,7 @@ logger.setLevel(logging.INFO)
 exporter = metrics_exporter.new_metrics_exporter(
   enable_standard_metrics=True,
   connection_string='InstrumentationKey=7db6813c-4105-4383-859d-6335b52dcfa9')
-view_manager.register_exporter(exporter)
+
 
 # Tracing
 tracer = Tracer(
