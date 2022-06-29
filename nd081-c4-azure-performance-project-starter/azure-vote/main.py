@@ -90,16 +90,11 @@ def index():
 
         # Get current values
         vote1 = r.get(button1).decode('utf-8')
-        # TODO: use tracer object to trace cat vote
-        with tracer.span(name="Cats Vote") as span:
-            tc.track_event(name="Cats Vote")
-        tc.flush()
+        tracer.span(name="Cats Vote")
         
         vote2 = r.get(button2).decode('utf-8')
-        with tracer.span(name="Dogs Vote") as span:
-            tc.track_event("Dogs Vote")
-        tc.flush()
-
+        tracer.span(name="Dogs Vote")
+        
         # Return index with values
         return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title)
 
