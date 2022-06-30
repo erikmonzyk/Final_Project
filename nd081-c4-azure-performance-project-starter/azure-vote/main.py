@@ -28,7 +28,7 @@ from applicationinsights import TelemetryClient
 logger = logging.getLogger(__name__)
 logHandler = AzureLogHandler(connection_string='InstrumentationKey=7db6813c-4105-4383-859d-6335b52dcfa9')
 eventHandler = AzureEventHandler(connection_string='InstrumentationKey=7db6813c-4105-4383-859d-6335b52dcfa9')
-logger.setLevel(INFO)
+logger.setLevel(logging.INFO)
 logger.addHandler(logHandler)
 logger.addHandler(eventHandler)
 
