@@ -26,11 +26,11 @@ from applicationinsights import TelemetryClient
 
 # Logging
 logger = logging.getLogger(__name__)
-logger.addHandler(AzureLogHandler(connection_string='InstrumentationKey=7db6813c-4105-4383-859d-6335b52dcfa9'))
-# handler.setFormatter(logging.Formatter('%(traceId)s %(spanId)s %(message)s'))
-# logger.addHandler(handler)
-# logger.addHandler(AzureEventHandler(connection_string='InstrumentationKey=7db6813c-4105-4383-859d-6335b52dcfa9'))
-# logger.setLevel(logging.INFO)
+logHandler = AzureLogHandler(connection_string='InstrumentationKey=7db6813c-4105-4383-859d-6335b52dcfa9')
+eventHandler = AzureEventHandler(connection_string='InstrumentationKey=7db6813c-4105-4383-859d-6335b52dcfa9')
+logger.setLevel(INFO)
+logger.addHandler(logHandler)
+logger.addHandler(eventHandler)
 
 # Metrics
 exporter = metrics_exporter.new_metrics_exporter(
