@@ -90,7 +90,6 @@ def index():
         # Get current values
         vote1 = r.get(button1).decode('utf-8')
         tracer.span(name="Cats")
-        .
         vote2 = r.get(button2).decode('utf-8')
         tracer.span(name="Dogs")
         
