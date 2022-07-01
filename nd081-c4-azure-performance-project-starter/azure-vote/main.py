@@ -72,7 +72,7 @@ else:
     title = app.config['TITLE']
 
 # Redis Connection set for local or single host VMSS
-# r = redis.Redis()
+r = redis.Redis()
 
 redis_server = os.environ['REDIS']
 
