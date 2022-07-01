@@ -22,7 +22,7 @@ from opencensus.ext.azure.trace_exporter import AzureExporter
 from opencensus.trace.samplers import ProbabilitySampler
 from opencensus.trace.tracer import Tracer
 from opencensus.ext.flask.flask_middleware import FlaskMiddleware
-from applicationinsights import TelemetryClient
+# from applicationinsights import TelemetryClient
 
 # Logging
 logger = logging.getLogger(__name__)
