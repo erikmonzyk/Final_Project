@@ -1,4 +1,4 @@
-# Azure Pipeline Deployment Instructions
+compare# Azure Pipeline Deployment Instructions
 
 1. Clone this repo
 2. Create new repo on your GitHub account and push the contents up to it
