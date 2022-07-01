@@ -72,7 +72,7 @@ else:
     title = app.config['TITLE']
 
 # Redis Connection set for local or single host VMSS
-r = redis.Redis()
+#r = redis.Redis()
 
 redis_server = os.environ['REDIS']
 
@@ -121,6 +121,7 @@ def index():
             properties = {'custom_dimensions': {'Cats Vote': vote1}}
             # TODO: use logger object to log cat vote
             logger.info('Cats', extra=properties)
+            
 
             vote2 = r.get(button2).decode('utf-8')
             properties = {'custom_dimensions': {'Dogs Vote': vote2}}
